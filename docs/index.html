@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luftbro</title>
+<meta name="description" content="A Mac app that plays your own films and series on an Apple TV, MKV included. Free and open source.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#101114">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://luftbro.github.io/luftbro/">
+<meta property="og:title" content="Luftbro">
+<meta property="og:description" content="A Mac app that plays your own films and series on an Apple TV, MKV included.">
+<meta property="og:image" content="https://luftbro.github.io/luftbro/assets/social-card.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="The Luftbro icon, a TV showing colour bars, next to the name and the line: Your own films and series on the Apple TV, straight from the Mac.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icon.png">
+<style>
+  :root {
+    --bg: #101114;
+    --bg-2: #17181c;
+    --line: #2a2c32;
+    --text: #e4e4e2;
+    --muted: #9a9b9e;
+    --accent: #8fd3d2;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.55 var(--font); -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:hover { color: #fff; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  img { max-width: 100%; height: auto; display: block; }
+  code { font-family: var(--mono); font-size: .88em; background: var(--bg-2); padding: 1px 5px; border-radius: 4px; }
+  h1 { font-size: 36px; font-weight: 650; letter-spacing: -0.015em; line-height: 1.2; margin: 0; }
+  h2 { font-size: 20px; font-weight: 650; line-height: 1.2; margin: 44px 0 12px; }
+  p, ul, ol { margin: 0 0 14px; }
+  .page { max-width: 680px; margin: 0 auto; padding: 56px 20px 0; }
+  @media (max-width: 600px) { .page { padding: 40px 16px 0; } }
+  .muted { color: var(--muted); }
+  /* The icon has a transparent margin of about a tenth; the negative margins line its edge up with the text. */
+  .icon { width: 96px; height: 96px; margin: -10px 0 10px -10px; }
+  .lede { font-size: 19px; margin: 14px 0 22px; }
+  .get { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; }
+  .button { display: inline-block; padding: 10px 18px; border: 1px solid var(--text); border-radius: 6px; color: var(--text); text-decoration: none; font-weight: 600; white-space: nowrap; }
+  .button:hover { background: var(--text); color: var(--bg); }
+  .button.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .button.primary:hover { background: #fff; border-color: #fff; }
+  .meta { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; justify-items: center; margin: 40px 0 0; }
+  .two img { width: 100%; max-width: 320px; }
+  @media (max-width: 560px) { .two { grid-template-columns: 1fr; } .two img { max-width: 300px; } }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; margin: 0 0 32px; }
+  .pair img, .shot { width: 100%; border: 1px solid var(--line); border-radius: 10px; }
+  .shot { margin: 0 0 32px; }
+  @media (max-width: 560px) { .pair { grid-template-columns: 1fr; } }
+  ol { padding-left: 1.4em; }
+  ol li { margin: 0 0 8px; }
+  .cmd { display: flex; align-items: center; gap: 10px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 6px; padding: 8px 8px 8px 14px; margin: 10px 0 0; }
+  .cmd code { background: none; padding: 0; min-width: 0; flex: 1; font-size: 14px; overflow-wrap: anywhere; }
+  .cmd button { flex: none; font: 600 13px var(--font); color: var(--text); background: none; border: 1px solid var(--line); border-radius: 5px; padding: 6px 10px; cursor: pointer; }
+  .cmd button:hover { border-color: var(--text); }
+  footer { margin-top: 56px; padding: 22px 0 44px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="page">
+<main>
+  <img class="icon" src="assets/icon.png" width="96" height="96" alt="">
+  <h1>Luftbro</h1>
+  <p class="lede">
+    A Mac app that plays your own films and series on an Apple TV, MKV included.
+    The Mac is the remote.
+  </p>
+  <p class="get">
+    <a class="button primary" href="https://github.com/luftbro/luftbro#readme">Read more</a>
+    <a class="button" data-download href="https://github.com/luftbro/luftbro/releases/latest/download/Luftbro-1.0.dmg">Download</a>
+    <span class="meta"><span data-version>1.0 · 77 MB</span> · macOS 14+ · Apple Silicon · free</span>
+  </p>
+
+  <div class="two">
+    <img src="screenshots/player.png" width="960" height="1666" alt="The Luftbro window while an episode plays on the Apple TV called Living Room: the title and format badges, a timeline drawn as bands of the episode's own colours, playback controls, audio and subtitle pickers, the sleep timer and the Darken Mac screen switch, and recent files with time left">
+    <img src="screenshots/preview.png" width="960" height="1666" loading="lazy" alt="The same window with the pointer over the timeline: a small frame from that point in the episode floats above it">
+  </div>
+
+  <h2>What it does</h2>
+
+  <p>Plays files the Apple TV won't open, and starts in about a second. 4K HDR, Dolby Vision and Atmos get there untouched.</p>
+
+  <p>Skip Intro and Next Episode, also when the file has no chapters.</p>
+  <div class="pair">
+    <img src="assets/skip-intro.jpg" width="920" height="645" loading="lazy" alt="Night Train S1 · E1 at 4:33, in the intro Luftbro found by its sound, as the file has no chapters: a Skip Intro button with 'or press Space' beside it, and the intro's mark on the timeline just after the playhead">
+    <img src="assets/next-episode.jpg" width="920" height="810" loading="lazy" alt="The same episode at 47:11, in the end credits Luftbro found in the picture: an Up Next row for S1 · E2 that says Space plays it, with Not Now and Play buttons">
+  </div>
+
+  <p>The timeline is the film in its own colours, with a frame where you hover.</p>
+  <img class="shot" src="assets/timeline-preview.jpg" width="920" height="352" loading="lazy" alt="The colour timeline of an episode, bands of its own colours from dark greys to blues and browns, with a small frame from 31:36 floating above the pointer">
+
+  <p>Every film gets its own look.</p>
+  <div class="pair">
+    <img src="assets/look-night-train.jpg" width="920" height="590" loading="lazy" alt="An episode of Night Train loaded and ready: blue-grey background, its picture and format badges, its colour timeline and a light blue Resume button">
+    <img src="assets/look-quiet-hours.jpg" width="920" height="590" loading="lazy" alt="The film Quiet Hours in the same place: an olive-green background, its own picture and timeline, and a green Resume button">
+  </div>
+
+  <p>When a stream stutters, it says why.</p>
+  <div class="pair">
+    <img src="assets/diagnostics-summary.png" width="1022" height="776" loading="lazy" alt="The Diagnostics panel, Summary tab: a green 'Streaming healthy' banner (the stream needs 6.9 Mbit/s and got 7.4, the Apple TV has 58 s buffered), then tiles for throughput, TV buffer, headroom and round trip">
+    <img src="assets/diagnostics-charts.png" width="1022" height="776" loading="lazy" alt="Diagnostics, Charts tab: throughput to the Apple TV over five minutes, a burst at the start and then a steady line just above the dashed line for what the stream needs">
+  </div>
+
+  <p>The Mac's screen goes dark while you watch, so it doesn't light up the room. Space and the arrow keys still work in the dark, and the mouse brings it back.</p>
+  <img class="shot" src="assets/darken-screen.jpg" width="920" height="628" loading="lazy" alt="Below the audio and subtitle tiles: the Sleep Timer, and Darken Mac screen with an info button and a switch that is on. The info button's explanation is open: the screen goes dark a couple of seconds after a film starts on the TV, the playback keys still work, and the mouse brings it back">
+
+  <p>Subtitles move to match the speech. No account, no server to set up, nothing sent anywhere.</p>
+  <p><a href="https://github.com/luftbro/luftbro#readme">Read more in the README</a>.</p>
+
+  <h2 id="install">Install</h2>
+  <ol>
+    <li>Download the .dmg and drag Luftbro to Applications.</li>
+    <li>It isn't notarized (that's $99 a year), so macOS warns the first time. Click Done, then System Settings → Privacy &amp; Security → <strong>Open Anyway</strong>. Or run this once:
+      <div class="cmd">
+        <code id="xattr">xattr -dr com.apple.quarantine /Applications/Luftbro.app</code>
+        <button type="button" data-copy="xattr" aria-label="Copy the command">Copy</button>
+      </div>
+    </li>
+    <li>Pick your Apple TV at the top left and type the PIN it shows.</li>
+  </ol>
+</main>
+
+<footer>
+  <p><a href="https://github.com/luftbro/luftbro">Source on GitHub</a> · MIT · Uses <a href="https://pyatv.dev">pyatv</a> and <a href="https://ffmpeg.org">FFmpeg</a>.</p>
+  <p>Apple, Apple TV, AirPlay and macOS are trademarks of Apple Inc. Luftbro isn't affiliated with Apple. Use it with video you have the right to play.</p>
+</footer>
+</div>
+<script>
+  // Point the download links at the newest release's .dmg (static link above as fallback).
+  (function () {
+    fetch("https://api.github.com/repos/luftbro/luftbro/releases/latest", { headers: { Accept: "application/vnd.github+json" } })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (rel) {
+        if (!rel) return;
+        var dmg = (rel.assets || []).filter(function (a) { return /\.dmg$/i.test(a.name); })[0];
+        if (!dmg) return;
+        document.querySelectorAll("[data-download]").forEach(function (a) { a.href = dmg.browser_download_url; });
+        var v = (rel.tag_name || "").replace(/^v/, "");
+        var mb = Math.round(dmg.size / 1048576);
+        if (v && mb) document.querySelectorAll("[data-version]").forEach(function (s) { s.textContent = v + " · " + mb + " MB"; });
+      })
+      .catch(function () {});
+  })();
+
+  // Copy button.
+  document.querySelectorAll("[data-copy]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var text = document.getElementById(b.getAttribute("data-copy")).textContent;
+      (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject())
+        .then(function () { b.textContent = "Copied"; setTimeout(function () { b.textContent = "Copy"; }, 1600); })
+        .catch(function () {});
+    });
+  });
+</script>
+</body>
+</html>
